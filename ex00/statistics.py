@@ -143,25 +143,17 @@ number set
         - AssertionError if any argument has an invalid type
         - AssertionError if an invalid keyword is provided
 """
-    try:
-        assert len(args) > 0, "No numbers given."
-        for n in args:
-            assert isinstance(n, int) or isinstance(n, float), f"Invalid \
-argument: {n}. All non-keyword arguments must be numbers."
-        for n in kwargs:
-            assert isinstance(kwargs[n], str), f"Invalid keyword argument: \
-{kwargs[n]}. All keyword arguments must be strings."
-        funcs = {
-            "mean": mean,
-            "median": median,
-            "quartile": quartile,
-            "std": std,
-            "var": var
-        }
-        for n in kwargs:
-            assert kwargs[n] in funcs, f"{kwargs[n]} is not a valid keyword."
-        for n in kwargs:
+    funcs = {
+        "mean": mean,
+        "median": median,
+        "quartile": quartile,
+        "std": std,
+        "var": var
+    }
+    for n in kwargs:
+        try:
             keyword = funcs.get(kwargs[n])
-            print(f"{kwargs[n]}: {keyword(args)}")
-    except AssertionError as msg:
-        print("ft_statistics: AssertionError:", msg)
+            if keyword is not None:
+                print(f"{kwargs[n]}: {keyword(args)}")
+        except Exception as msg:
+            print(f"ft_statistics: {type(msg).__name__}: {msg}")
