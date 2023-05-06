@@ -137,11 +137,6 @@ number set
 
     Returns:
         None
-
-    Raises:
-        - AssertionError there are no numbers provided
-        - AssertionError if any argument has an invalid type
-        - AssertionError if an invalid keyword is provided
 """
     funcs = {
         "mean": mean,
