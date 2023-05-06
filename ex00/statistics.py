@@ -149,6 +149,6 @@ number set
         try:
             keyword = funcs.get(kwargs[n])
             if keyword is not None:
-                print(f"{kwargs[n]}: {keyword(args)}")
+                print(f"{kwargs[n]} : {keyword(args)}")
         except Exception as msg:
             print(f"ft_statistics: {type(msg).__name__}: {msg}")
